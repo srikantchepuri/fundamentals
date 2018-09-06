@@ -172,6 +172,72 @@ namespace myfunda
 
 
         }
+        
+         public static void RegexExcercises()
+        {
+            //string input = "A Thousand Splendid Sun s S";
+            //MatchCollection matches = Regex.Matches(input, @"\bS\S*");
+
+            //string input = "123-45-6789";
+            //MatchCollection matches = Regex.Matches(input, @"^\d{3}-\d{2}-\d{4}$");
+
+            List<string>  input = new List<string>();
+            input.Add("321-555-4321");
+            input.Add("123.555.1234");
+            string regex = @"^\d{3}[.-]\d{3}[.-]\d{4}$";
+
+
+
+            List<string> matches = new List<string>();
+            foreach (string s in input)
+            {
+               if( Regex.Match(s, regex).Success)
+                {
+                    matches.Add(s);
+                }
+            }
+          
+
+
+
+
+            //Mr.Schafer
+            //Mr Smith
+            //Ms Davis
+            //Mrs.Robinson
+            //Mr.T
+
+
+            if (matches.Count > 0)
+            {
+                foreach (string m in matches)
+                {
+                    Console.WriteLine(m);
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No matches found :(");
+            }
+
+
+            //Match Social Security Number. 
+
+
+
+        }
+
+        public static void BinaryTreeExcercise()
+        {
+            BinaryTree bt = new BinaryTree(23);
+
+            bt.root.left = new BinaryTreeNode(13);
+
+            bt.root.right = new BinaryTreeNode(08);
+
+            
+        }
 
        
 
