@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace myfunda
 {
     
@@ -213,6 +213,33 @@ namespace myfunda
                 str = (str + 1) % max;
 
             }
+        }
+    }
+
+    class BinaryTreeNode
+    {
+        int key;
+        public BinaryTreeNode left, right;
+
+        public BinaryTreeNode(int item)
+        {
+            key = item;
+            left = null;
+            right = null;
+        }
+    }
+
+    class BinaryTree
+    {
+        public BinaryTreeNode root;
+
+        public BinaryTree(int key)
+        {
+            root = new BinaryTreeNode(key);
+        }
+        public BinaryTree()
+        {
+            root = null;
         }
     }
 }
