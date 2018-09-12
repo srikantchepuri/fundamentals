@@ -241,6 +241,35 @@ namespace myfunda
         {
             root = null;
         }
+        public void TraversePreOrder(BinaryTreeNode node)
+        {
+            if (node == null)
+                return;
+
+            Console.WriteLine(node.key.ToString()+" ");
+            TraversePreOrder(node.left);
+            TraversePreOrder(node.right);
+        }
+
+        public void TraversePostOrder(BinaryTreeNode node)
+        {
+            if (node == null)
+                return;
+
+           
+            TraversePostOrder(node.left);
+            TraversePostOrder(node.right);
+            Console.WriteLine(node.key.ToString() + " ");
+        }
+
+        public void TraverseInOrder(BinaryTreeNode node)
+        {
+            if (node == null)
+                return;
+            TraverseInOrder(node.left);
+            Console.WriteLine(node.key.ToString() + " ");
+            TraverseInOrder(node.right);
+        }
     }
 }
 
