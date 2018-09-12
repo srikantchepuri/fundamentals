@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace myfunda
 {
@@ -7,31 +9,17 @@ namespace myfunda
         public static void Main(string[] args)
         {
 
+            BinaryTreeExcercise();
+            
+           
+            //MainClass mc = new MainClass();
 
-            //int[] tmparray = new int[]{ 20,13, 7, 2, 8, 3 };
-
-            //BubbleSort(tmparray);
-
-            //InsertionSort(tmparray);
-
-            //int[] sortedarray = new int[] { 2,5,7,9,11,13,15,17,23}; 
-
-            //BinarySearch(sortedarray,2);
-
-
-            QuickFindUF qf=new QuickFindUF(10);
-
-            Console.WriteLine(qf.Connected(1,2).ToString());
-            Console.ReadKey();
-
-            MainClass mc = new MainClass();
-
-            mc.MakeLinkedList();
+            //mc.MakeLinkedList();
 
 
             //RegexExcercises();
 
-            SortringExcercises();
+            //SortringExcercises();
 
             Console.ReadKey();
 
@@ -40,12 +28,22 @@ namespace myfunda
 
         }
 
+        public static void QuickFindAlgorithms()
+        {
+            QuickFindUF qf = new QuickFindUF(10);
+
+            Console.WriteLine(qf.Connected(1, 2).ToString());
+            Console.ReadKey();
+
+        }
+
         public static void SortringExcercises()
         {
             int[] myarray = new int[] { 20, 13, 2, 23, 15, 33, 21, 54 };
-            CSAlgorithms csa = new CSAlgorithms();
+            Algorithms csa = new Algorithms();
+
             ////csa.InsertionSort(myarray);
-            csa.BubbleSort(myarray);
+            Algorithms.BubbleSort(myarray);
             ////csa.SelectionSort(myarray);
             ////csa.BuildMaxHeap(myarray);
 
@@ -172,74 +170,28 @@ namespace myfunda
 
 
         }
-        
-         public static void RegexExcercises()
-        {
-            //string input = "A Thousand Splendid Sun s S";
-            //MatchCollection matches = Regex.Matches(input, @"\bS\S*");
 
-            //string input = "123-45-6789";
-            //MatchCollection matches = Regex.Matches(input, @"^\d{3}-\d{2}-\d{4}$");
-
-            List<string>  input = new List<string>();
-            input.Add("321-555-4321");
-            input.Add("123.555.1234");
-            string regex = @"^\d{3}[.-]\d{3}[.-]\d{4}$";
-
-
-
-            List<string> matches = new List<string>();
-            foreach (string s in input)
-            {
-               if( Regex.Match(s, regex).Success)
-                {
-                    matches.Add(s);
-                }
-            }
-          
-
-
-
-
-            //Mr.Schafer
-            //Mr Smith
-            //Ms Davis
-            //Mrs.Robinson
-            //Mr.T
-
-
-            if (matches.Count > 0)
-            {
-                foreach (string m in matches)
-                {
-                    Console.WriteLine(m);
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("No matches found :(");
-            }
-
-
-            //Match Social Security Number. 
-
-
-
-        }
+       
 
         public static void BinaryTreeExcercise()
         {
-            BinaryTree bt = new BinaryTree(23);
-
-            bt.root.left = new BinaryTreeNode(13);
-
-            bt.root.right = new BinaryTreeNode(08);
-
             
-        }
+            BinaryTree bt = new BinaryTree(1);
+            bt.root.left = new BinaryTreeNode(2);
+            bt.root.right = new BinaryTreeNode(3);
+            bt.root.left.left = new BinaryTreeNode(4);
+            bt.root.left.right = new BinaryTreeNode(5);
 
-       
+            Console.WriteLine("Binary Tree Created");
+
+            Console.WriteLine("InOrder Traversal");
+            bt.TraverseInOrder(bt.root);
+            Console.WriteLine("PreOrder Traversal");
+            bt.TraversePreOrder(bt.root);
+            Console.WriteLine("PostOrder Traversal");
+            bt.TraversePostOrder(bt.root);
+
+        }
 
 
 
