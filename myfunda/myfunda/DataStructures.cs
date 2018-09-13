@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace myfunda
 {
     
@@ -218,7 +220,7 @@ namespace myfunda
 
     class BinaryTreeNode
     {
-        int key;
+        public int key;
         public BinaryTreeNode left, right;
 
         public BinaryTreeNode(int item)
@@ -241,6 +243,7 @@ namespace myfunda
         {
             root = null;
         }
+
         public void TraversePreOrder(BinaryTreeNode node)
         {
             if (node == null)
@@ -269,6 +272,46 @@ namespace myfunda
             TraverseInOrder(node.left);
             Console.WriteLine(node.key.ToString() + " ");
             TraverseInOrder(node.right);
+        }
+
+        public void InsertNode(BinaryTreeNode node)
+        {
+            if (node == null)
+                return;
+
+            List<BinaryTreeNode> list = new List<BinaryTreeNode>();
+            list.Add(this.root);
+
+
+            for (int i=0;i<list.Count;i++)
+            {
+                BinaryTreeNode btn = list[i];
+
+                if (btn.left == null)
+                {
+                    btn.left = node;
+                    return;
+                }
+                else
+                {
+                    list.Add(btn.left);
+                }
+
+                if (btn.right == null)
+                {
+                    btn.right = node;
+                    return;
+                }
+                else
+                {
+                    list.Add(btn.right);
+                    
+                }
+
+                //list.Remove(btn);
+            }
+            
+
         }
     }
 }
