@@ -176,7 +176,7 @@ namespace myfunda
         public static void BinaryTreeExcercise()
         {
             
-            BinaryTree bt = new BinaryTree(1);
+             BinaryTree bt = new BinaryTree(1);
             bt.root.left = new BinaryTreeNode(2);
             bt.root.right = new BinaryTreeNode(3);
             bt.root.left.left = new BinaryTreeNode(4);
@@ -190,6 +190,29 @@ namespace myfunda
             bt.TraversePreOrder(bt.root);
             Console.WriteLine("PostOrder Traversal");
             bt.TraversePostOrder(bt.root);
+
+
+
+            Console.WriteLine("Insert a Node");
+            bt.InsertNode(new BinaryTreeNode(6));
+            Console.WriteLine("InOrder Traversal");
+            bt.TraverseInOrder(bt.root);
+
+            Console.WriteLine("Insert a Node");
+            bt.InsertNode(new BinaryTreeNode(7));
+            Console.WriteLine("InOrder Traversal");
+            bt.TraverseInOrder(bt.root);
+
+
+            Console.WriteLine("Insert a Node");
+            bt.InsertNode(new BinaryTreeNode(8));
+            Console.WriteLine("InOrder Traversal");
+            bt.TraverseInOrder(bt.root);
+
+            Console.WriteLine("Insert a Node");
+            bt.InsertNode(new BinaryTreeNode(9));
+            Console.WriteLine("InOrder Traversal");
+            bt.TraverseInOrder(bt.root);
 
         }
 
