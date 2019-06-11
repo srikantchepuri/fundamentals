@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System;
 
 namespace myfunda
 {
@@ -9,41 +7,45 @@ namespace myfunda
         public static void Main(string[] args)
         {
 
-            BinaryTreeExcercise();
-            
-           
-            //MainClass mc = new MainClass();
 
-            //mc.MakeLinkedList();
+            //int[] tmparray = new int[]{ 20,13, 7, 2, 8, 3 };
+
+            //BubbleSort(tmparray);
+
+            //InsertionSort(tmparray);
+
+            //int[] sortedarray = new int[] { 2,5,7,9,11,13,15,17,23}; 
+
+            //BinarySearch(sortedarray,2);
+
+
+            QuickFindUF qf=new QuickFindUF(10);
+
+            Console.WriteLine(qf.Connected(1,2).ToString());
+            Console.ReadKey();
+
+            MainClass mc = new MainClass();
+
+            mc.MakeLinkedList();
 
 
             //RegexExcercises();
 
-            //SortringExcercises();
+            SortringExcercises();
 
             Console.ReadKey();
 
 
 
-
-        }
-
-        public static void QuickFindAlgorithms()
-        {
-            QuickFindUF qf = new QuickFindUF(10);
-
-            Console.WriteLine(qf.Connected(1, 2).ToString());
-            Console.ReadKey();
 
         }
 
         public static void SortringExcercises()
         {
             int[] myarray = new int[] { 20, 13, 2, 23, 15, 33, 21, 54 };
-            Algorithms csa = new Algorithms();
-
+            CSAlgorithms csa = new CSAlgorithms();
             ////csa.InsertionSort(myarray);
-            Algorithms.BubbleSort(myarray);
+            csa.BubbleSort(myarray);
             ////csa.SelectionSort(myarray);
             ////csa.BuildMaxHeap(myarray);
 
@@ -172,49 +174,6 @@ namespace myfunda
         }
 
        
-
-        public static void BinaryTreeExcercise()
-        {
-            
-             BinaryTree bt = new BinaryTree(1);
-            bt.root.left = new BinaryTreeNode(2);
-            bt.root.right = new BinaryTreeNode(3);
-            bt.root.left.left = new BinaryTreeNode(4);
-            bt.root.left.right = new BinaryTreeNode(5);
-
-            Console.WriteLine("Binary Tree Created");
-
-            Console.WriteLine("InOrder Traversal");
-            bt.TraverseInOrder(bt.root);
-            Console.WriteLine("PreOrder Traversal");
-            bt.TraversePreOrder(bt.root);
-            Console.WriteLine("PostOrder Traversal");
-            bt.TraversePostOrder(bt.root);
-
-
-
-            Console.WriteLine("Insert a Node");
-            bt.InsertNode(new BinaryTreeNode(6));
-            Console.WriteLine("InOrder Traversal");
-            bt.TraverseInOrder(bt.root);
-
-            Console.WriteLine("Insert a Node");
-            bt.InsertNode(new BinaryTreeNode(7));
-            Console.WriteLine("InOrder Traversal");
-            bt.TraverseInOrder(bt.root);
-
-
-            Console.WriteLine("Insert a Node");
-            bt.InsertNode(new BinaryTreeNode(8));
-            Console.WriteLine("InOrder Traversal");
-            bt.TraverseInOrder(bt.root);
-
-            Console.WriteLine("Insert a Node");
-            bt.InsertNode(new BinaryTreeNode(9));
-            Console.WriteLine("InOrder Traversal");
-            bt.TraverseInOrder(bt.root);
-
-        }
 
 
 
