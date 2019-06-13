@@ -125,4 +125,39 @@ def InsertSort(mylist):
 InsertSort(mylisttest)
 
 #Merge Sort
+mylisttest=[100,4,2,16,55,6,77,1,99,102,50]
+def MergeSort(mylist):
+    if(len(mylist)>1):
+        mid=len(mylist)//2
+        leftList=mylist[:mid]
+        rightList=mylist[mid:]
+        MergeSort(leftList)
+        MergeSort(rightList)
+        #Merge
+        i=j=k=0
+
+        while i<len(leftList) and j<len(rightList):
+            if(leftList[i]<rightList[j]):
+                mylist[k]=leftList[i]
+                i+=1
+            else:
+                mylist[k]=rightList[j]
+                j+=1
+            k+=1
+        while i<len(leftList):
+            mylist[k]=leftList[i]
+            i+=1
+            k+=1
+        while j<len(rightList):
+            mylist[k]=rightList[j]
+            j+=1
+            k+=1
+    #print(mylist)
+
+#Run Merge Sort
+MergeSort(mylisttest)
+print(mylisttest)
+
+
+
 
