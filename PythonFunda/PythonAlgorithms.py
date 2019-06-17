@@ -125,3 +125,7 @@ def InsertSort(mylist):
 InsertSort(mylisttest)
 
 
+#Merge Sort
+def MergeSort():
+    #Merge Sort implrementation is going to be here.
+    return 
