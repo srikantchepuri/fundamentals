@@ -160,8 +160,45 @@ print(mylisttest)
 
 
 
+#Heap Sort Implementation
 
-#Merge Sort
-def MergeSort():
-    #Merge Sort implrementation is going to be here.
-    return 
+def heapify(mylist,hroot):
+    max=hroot
+    left = hroot * 2 + 1
+    right = hroot * 2 + 2
+    print(left)
+    print(right)
+    if hroot < len(mylist) and mylist[hroot] < mylist[left]:
+        max = left
+
+    if hroot < len(mylist) and mylist[max] < mylist[right]:
+        max = right
+
+    if hroot != max:
+        swap = mylist[hroot]
+        mylist[hroot] = mylist[max]
+        mylist[max] = swap
+        heapify(mylist, max)
+
+
+
+    
+
+def buildMaxheap(mylist):
+    hroot =(len(mylist))//2-1
+    print(hroot)
+    while hroot>=0:
+        print(hroot)
+        #heapify1(mylist,len(mylist),hroot)
+        heapify(mylist,hroot)
+        hroot=hroot-1
+    
+    print(mylist)
+
+mylisttest = [100,4,2,16,55,6,77,1,99,102,50]
+heapify(mylisttest,3)
+
+
+buildMaxheap(mylisttest)    
+
+
