@@ -162,43 +162,213 @@ print(mylisttest)
 
 #Heap Sort Implementation
 
-def heapify(mylist,hroot):
-    max=hroot
-    left = hroot * 2 + 1
-    right = hroot * 2 + 2
-    print(left)
-    print(right)
-    if hroot < len(mylist) and mylist[hroot] < mylist[left]:
-        max = left
-
-    if hroot < len(mylist) and mylist[max] < mylist[right]:
-        max = right
-
-    if hroot != max:
-        swap = mylist[hroot]
-        mylist[hroot] = mylist[max]
-        mylist[max] = swap
-        heapify(mylist, max)
+def heapify(arr, n, i): 
+    largest = i # Initialize largest as root 
+    l = 2 * i + 1     # left = 2*i + 1 
+    r = 2 * i + 2     # right = 2*i + 2 
+  
+    # See if left child of root exists and is 
+    # greater than root 
+    if l < n and arr[i] < arr[l]: 
+        largest = l 
+  
+    # See if right child of root exists and is 
+    # greater than root 
+    if r < n and arr[largest] < arr[r]: 
+        largest = r 
+  
+    # Change root, if needed 
+    if largest != i: 
+        arr[i],arr[largest] = arr[largest],arr[i] # swap 
+  
+        # Heapify the root. 
+        heapify(arr, n, largest)
 
 
 
     
 
-def buildMaxheap(mylist):
-    hroot =(len(mylist))//2-1
-    print(hroot)
-    while hroot>=0:
-        print(hroot)
-        #heapify1(mylist,len(mylist),hroot)
-        heapify(mylist,hroot)
-        hroot=hroot-1
-    
-    print(mylist)
+def heapSort(arr): 
+    n = len(arr) 
+  
+    # Build a maxheap. 
+    for i in range(n, -1, -1): 
+        heapify(arr, n, i) 
+  
+    # One by one extract elements 
+    for i in range(n-1, 0, -1): 
+        arr[i], arr[0] = arr[0], arr[i] # swap 
+        heapify(arr, i, 0) 
 
 mylisttest = [100,4,2,16,55,6,77,1,99,102,50]
-heapify(mylisttest,3)
+heapSort(mylisttest) 
+print(mylisttest)   
 
 
-buildMaxheap(mylisttest)    
+import math
+def jumpSearch(arr,x):
+    right =int(math.sqrt(len(arr)))
+    left=0
+    while arr[right-1]<x and right<len(arr):
+        left=right
+        right+=int(math.sqrt(len(arr)))
+        if(right>=len(arr)):
+            right=len(arr)
+    print(left)
+    print(right)
+    print("-----")
+    
+    for i in range(left,right,1):
+        if(arr[i]==x):
+            print("X found at :",i)
+        
+arr=[3,4,5,6,9,10,11,13,19]
+jumpSearch(arr,11)
 
 
+
+
+#Gas Station Algorithm
+'''
+There are N gas stations along a circular route, where the amount of gas at station i is gas[i].
+
+You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.
+
+Return the minimum starting gas station’s index if you can travel around the circuit once, otherwise return -1.
+
+You can only travel in one direction. i to i+1, i+2, ... n-1, 0, 1, 2..
+Completing the circuit means starting at i and ending up at i again.
+
+'''
+
+def traverse(gas,cost):
+    for i in range(len(gas)):
+        count=1
+        total_gas=gas[i]
+        next_gas=i
+        while count<=len(gas):
+            if total_gas>=cost[next_gas]:
+                total_gas+=gas[next_gas]
+                next_gas=(next_gas+1)%len(gas)
+                count+=1
+            else:
+                break
+            if(count==len(gas)):
+                print("matched")
+                return i
+            else:
+                print("did not match")
+                break
+    print("did not match")
+    return -1
+gas=[1,1,1,1,1]
+cost=[1,1,1,0,1]
+traverse(gas,cost)
+
+
+#get majority element
+
+def getMajorityElement(arr):
+    mydict={}
+    for i in arr:
+        if i in mydict:
+            mydict[i]+=1
+        else:
+            mydict[i]=1
+    
+
+    return  max(mydict, key=mydict.get)
+
+arr=[2, 2, 2, 3, 4, 4, 5, 6, 7, 8, 2]
+getMajorityElement(arr)
+
+
+def fibo(n,memo):
+    if memo[n] is not None:
+        return memo[n]
+    if n==1 or n==2:
+        result= 1
+    else:
+        result= fibo(n-1,memo)+fibo(n-2,memo)
+    memo[n]=result
+    return result
+
+def fibo_memo(n):
+    memo = [None] * (n + 1)
+    return fibo(n,memo)
+
+fibo_memo(5)  
+
+def fibo_bottom_up(n):
+    if n==1 or n==2 :
+        return 1
+    bottom_up=[None]*(n+1)
+    bottom_up[1]=1
+    bottom_up[2]=1
+    for i in range(3,n+1):
+        bottom_up[i]=bottom_up[i-1]+bottom_up[i-2]
+    return bottom_up[n]
+
+#Find sets of numbers that add up to N 
+
+def count_sets(arr,total):
+    mem={}
+    count_sets_sub(arr,total,len(arr)-1,mem)
+    
+def count_sets_sub(arr,total,i,mem):
+    key=str(total)+':'+str(i)
+    if total = 0 :
+        return 1
+    elif total < 0:
+        return 0
+    elif  i < 0:
+        return 0
+    elif total < arr[i]:
+        to_return=count_sets_sub(arr,total,i-1,mem)
+    else:
+        to_return=count_sets_sub(arr,total-arr[i],i-1,mem)+count_sets_sub(arr,total,i-1,mem)
+    mem[key]=to_return
+    return to_return
+
+
+def helper(arr,k):
+    if k == 0:
+        return 1
+    s=len(arr)-k
+    #check if starting index of the sub string we are checking is zero
+    if arr[s] =='0':
+        return 0
+    result = helper(arr,k-1)
+    if k>=2 and int(arr[s:s+2])<=26:
+        result += helper(arr,k-2)
+    return result
+
+def num_ways(arr):
+    return helper(arr,len(arr))
+
+
+def helper_dp(arr,k,memo):
+    if k == 0:
+        return 1
+    s=len(arr)-k
+    #check if starting index of the sub string we are checking is zero
+    if arr[s] =='0':
+        return 0
+    if memo[k] is not None:
+        return memo[k]
+    result = helper_dp(arr,k-1,memo)
+    if k>=2 and int(arr[s:s+2])<=26:
+        result += helper_dp(arr,k-2,memo)
+    memo[k]=result
+    return result
+
+def num_ways_dp(arr):
+    memo=[None]*(len(arr)+1)
+    return helper_dp(arr,len(arr),memo)
+
+arr="123"
+num_ways(arr)
+
+num_ways_dp(arr)
+
+abc=[None]*5

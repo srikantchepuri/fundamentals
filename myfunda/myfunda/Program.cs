@@ -45,7 +45,7 @@ namespace myfunda
             int[] myarray = new int[] { 20, 13, 2, 23, 15, 33, 21, 54 };
             CSAlgorithms csa = new CSAlgorithms();
             ////csa.InsertionSort(myarray);
-            csa.BubbleSort(myarray);
+            ////csa.BubbleSort(myarray);
             ////csa.SelectionSort(myarray);
             ////csa.BuildMaxHeap(myarray);
 
